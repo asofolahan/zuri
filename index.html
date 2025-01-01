@@ -201,7 +201,7 @@
         // Function to randomly select a variant
         function selectVariant() {
             // Check if user already has a variant assigned
-            let userVariant = localStorage.getItem('zuriVariant');
+            let userVariant = null; //localStorage.getItem('zuriVariant');
             
             if (!userVariant) {
                 // Randomly select a variant
