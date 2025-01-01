@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuri Fabrics - Authentic African Fashion</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #FF6B35;
+            --color-secondary: #FFD700;
+            --color-accent-1: #9B4F96;
+            --color-accent-2: #00A5A8;
+            --color-background: #FFF5E6;
+        }
+
+        body {
+            background-color: var(--color-background);
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .hero-pattern {
+            background-image: linear-gradient(30deg, var(--color-primary) 12%, transparent 12.5%, transparent 87%, var(--color-primary) 87.5%, var(--color-primary)),
+                            linear-gradient(150deg, var(--color-primary) 12%, transparent 12.5%, transparent 87%, var(--color-primary) 87.5%, var(--color-primary)),
+                            linear-gradient(30deg, var(--color-primary) 12%, transparent 12.5%, transparent 87%, var(--color-primary) 87.5%, var(--color-primary)),
+                            linear-gradient(150deg, var(--color-primary) 12%, transparent 12.5%, transparent 87%, var(--color-primary) 87.5%, var(--color-primary)),
+                            linear-gradient(60deg, var(--color-secondary) 25%, transparent 25.5%, transparent 75%, var(--color-secondary) 75%, var(--color-secondary)),
+                            linear-gradient(60deg, var(--color-secondary) 25%, transparent 25.5%, transparent 75%, var(--color-secondary) 75%, var(--color-secondary));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            opacity: 0.1;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #e55a2a;
+            transform: translateY(-2px);
+        }
+
+        .feature-item {
+            border-left: 4px solid var(--color-accent-2);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+            background-color: rgba(0, 165, 168, 0.1);
+        }
+
+        .gradient-border {
+            position: relative;
+        }
+
+        .gradient-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary), var(--color-accent-2));
+        }
+
+        .success-message {
+            display: none;
+            background-color: rgba(0, 165, 168, 0.1);
+            border: 1px solid var(--color-accent-2);
+            color: var(--color-accent-2);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom right, var(--color-primary), var(--color-accent-1));
+            opacity: 0.2;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+            }
+            .hero-content, .hero-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen relative overflow-hidden">
+        <!-- Decorative Pattern -->
+        <div class="hero-pattern fixed inset-0 z-0"></div>
+
+        <!-- Main Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="hero-section flex items-center">
+                <!-- Left Content -->
+                <div class="hero-content w-full lg:w-1/2 pr-8">
+                    <h1 id="mainHeading" class="text-5xl font-bold mb-6" style="color: var(--color-primary)"></h1>
+                    <p id="subHeading" class="text-xl mb-8" style="color: var(--color-accent-1)"></p>
+
+                    <!-- Features -->
+                    <div id="featuresList" class="space-y-4 mb-12">
+                        <!-- Features will be dynamically inserted here -->
+                    </div>
+
+                    <!-- Email Form -->
+                    <form id="waitlistForm" class="space-y-4">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input 
+                                type="email" 
+                                id="email"
+                                required
+                                placeholder="Enter your email"
+                                class="flex-1 px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2"
+                                style="border-color: var(--color-primary)"
+                            >
+                            <button 
+                                type="submit"
+                                id="ctaButton"
+                                class="btn-primary px-8 py-3 rounded-lg font-semibold shadow-lg"
+                            ></button>
+                        </div>
+                    </form>
+
+                    <!-- Success Message -->
+                    <div id="successMessage" class="success-message mt-4 p-4 rounded-lg">
+                        Thanks for joining! We'll keep you updated on our launch.
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="hero-image w-full lg:w-1/2">
+                    <img 
+                        id="heroImage"
+                        src="800x600.jpg"
+                        alt="African fashion showcase"
+                        class="rounded-lg shadow-2xl"
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // A/B Testing Variants
+        const variants = {
+            designer_access: {
+                id: 'designer_access',
+                mainHeading: 'Connect with Premium African Designers',
+                subHeading: 'Direct access to skilled Nigerian fashion designers and authentic materials',
+                features: [
+                    'Work directly with experienced African designers',
+                    'Access exclusive, authentic African fabrics',
+                    'Create unique, customized pieces',
+                ],
+                ctaText: 'Connect with Designers',
+                heroImage: '800x600.jpg', // Update with actual image
+                targetAudience: 'Fashion enthusiasts seeking authentic African designs'
+            },
+            custom_fitting: {
+                id: 'custom_fitting',
+                mainHeading: 'Perfect-Fitting African Fashion',
+                subHeading: 'Custom-fitted African designs, delivered to your door',
+                features: [
+                    'Virtual fitting technology for perfect measurements',
+                    '100% fit guarantee on all orders',
+                    'Personalized style consultations',
+                ],
+                ctaText: 'Get Your Perfect Fit',
+                heroImage: '800x600.jpg', // Update with actual image
+                targetAudience: 'Style-conscious individuals seeking perfectly fitted African wear'
+            },
+            fashion_education: {
+                id: 'fashion_education',
+                mainHeading: 'Master African Fashion & Design',
+                subHeading: 'Learn the art and culture of African fashion',
+                features: [
+                    'Expert-led workshops on African fashion',
+                    'Cultural insights and design principles',
+                    'Trending styles and techniques',
+                ],
+                ctaText: 'Start Learning Now',
+                heroImage: '800x600.jpg', // Update with actual image
+                targetAudience: 'Fashion students and cultural enthusiasts'
+            }
+        };
+
+        // Function to randomly select a variant
+        function selectVariant() {
+            // Check if user already has a variant assigned
+            let userVariant = localStorage.getItem('zuriVariant');
+            
+            if (!userVariant) {
+                // Randomly select a variant
+                const variantKeys = Object.keys(variants);
+                const randomIndex = Math.floor(Math.random() * variantKeys.length);
+                userVariant = variantKeys[randomIndex];
+                
+                // Store the selected variant
+                localStorage.setItem('zuriVariant', userVariant);
+            }
+            
+            return variants[userVariant];
+        }
+
+        // Function to update page content based on variant
+        function updatePageContent(variant) {
+            // Update main content
+            document.getElementById('mainHeading').textContent = variant.mainHeading;
+            document.getElementById('subHeading').textContent = variant.subHeading;
+            document.getElementById('ctaButton').textContent = variant.ctaText;
+            document.getElementById('heroImage').src = variant.heroImage;
+            document.getElementById('heroImage').alt = variant.mainHeading;
+
+            // Update features
+            const featuresList = document.getElementById('featuresList');
+            featuresList.innerHTML = variant.features.map(feature => `
+                <div class="feature-item pl-4 py-3 rounded-lg">
+                    <p class="text-gray-800">${feature}</p>
+                </div>
+            `).join('');
+        }
+
+        // Tracking Function
+        async function trackEvent(eventName, data = {}) {
+            const variant = localStorage.getItem('zuriVariant');
+            try {
+                await fetch('YOUR_GOOGLE_SHEETS_WEBHOOK_URL', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        event: eventName,
+                        variant: variant,
+                        timestamp: new Date().toISOString(),
+                        url: window.location.href,
+                        ...data
+                    })
+                });
+            } catch (error) {
+                console.error('Error tracking event:', error);
+            }
+        }
+
+        // Form Submission Handler
+        document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const button = e.target.querySelector('button');
+            const successMessage = document.getElementById('successMessage');
+            const variant = localStorage.getItem('zuriVariant');
+
+            button.disabled = true;
+            button.innerText = 'Sending...';
+
+            try {
+                await trackEvent('form_submit', { 
+                    email,
+                    variant_id: variant,
+                    cta_text: variants[variant].ctaText
+                });
+                
+                successMessage.style.display = 'block';
+                e.target.reset();
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('Something went wrong. Please try again.');
+            } finally {
+                button.disabled = false;
+                button.innerText = variants[variant].ctaText;
+            }
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectedVariant = selectVariant();
+            updatePageContent(selectedVariant);
+            
+            // Track page view with variant information
+            trackEvent('page_view', {
+                variant_id: selectedVariant.id,
+                target_audience: selectedVariant.targetAudience
+            });
+        });
+    </script>
+</body>
+</html>
