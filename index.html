@@ -96,10 +96,55 @@
                 width: 100%;
             }
         }
+
+        .logo {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 20;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-shadow {
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            background-color: rgba(255, 245, 230, 0.95);
+            backdrop-filter: blur(8px);
+        }
     </style>
 </head>
 <body>
     <div class="min-h-screen relative overflow-hidden">
+
+        <!-- Navigation with Logo -->
+        <nav class="nav-shadow fixed top-0 left-0 right-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="logo-container flex items-center">
+                        <!-- Logo -->
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#FF6B35] to-[#9B4F96] flex items-center justify-center shadow-lg">
+                                <span class="text-white text-2xl font-bold">Z</span>
+                            </div>
+                            <div class="logo text-2xl font-bold">
+                                Zuri Fabrics
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
         <!-- Decorative Pattern -->
         <div class="hero-pattern fixed inset-0 z-0"></div>
 
