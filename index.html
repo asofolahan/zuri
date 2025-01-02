@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zuri Fabrics - Authentic African Fashion</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
     <style>
         :root {
             --color-primary: #FF6B35;
@@ -121,6 +122,34 @@
             background-color: rgba(255, 245, 230, 0.95);
             backdrop-filter: blur(8px);
         }
+
+        .footer {
+            background: linear-gradient(
+                to right bottom,
+                rgba(255, 107, 53, 0.05),
+                rgba(155, 79, 150, 0.05)
+            );
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+            color: var(--color-primary);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-2px);
+            color: var(--color-accent-1);
+        }
+
+        .contact-link {
+            transition: all 0.3s ease;
+            color: var(--color-accent-2);
+        }
+
+        .contact-link:hover {
+            color: var(--color-primary);
+        }
     </style>
 </head>
 <body>
@@ -133,7 +162,7 @@
                         <!-- Logo -->
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#FF6B35] to-[#9B4F96] flex items-center justify-center shadow-lg">
-                                <img src="zuri logo.png" alt="Numr logo" class="h-12 w-12 rounded">
+                                <img src="zuri logo2.png" alt="Numr logo" class="h-12 w-12 rounded">
                             </div>
                             <div class="logo text-2xl font-bold">
                                 Zuri Fabrics
@@ -198,7 +227,55 @@
         </div>
     </div>
 
+    <!-- New Footer -->
+    <footer class="footer mt-auto py-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Contact Info -->
+                <div class="flex flex-col items-center md:items-start gap-2">
+                    <h3 class="text-lg font-semibold" style="color: var(--color-primary)">Contact Us</h3>
+                    <a href="mailto:hello@zurifabrics.com" class="contact-link flex items-center gap-2">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                        hello@zurifabrics.com
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex flex-col items-center gap-2">
+                    <h3 class="text-lg font-semibold" style="color: var(--color-primary)">Follow Us</h3>
+                    <div class="flex gap-6">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" 
+                           class="social-icon" title="Chat on WhatsApp">
+                            <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/zurifabrics" target="_blank" rel="noopener noreferrer" 
+                           class="social-icon" title="Follow on Instagram">
+                            <i data-lucide="instagram" class="w-6 h-6"></i>
+                        </a>
+                        
+                        <!-- TikTok -->
+                        <a href="https://tiktok.com/@zurifabrics" target="_blank" rel="noopener noreferrer" 
+                           class="social-icon" title="Follow on TikTok">
+                            <i data-lucide="video" class="w-6 h-6"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="text-sm text-gray-600">
+                    © 2025 Zuri Fabrics. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
         // A/B Testing Variants
         const variants = {
             designer_access: {
